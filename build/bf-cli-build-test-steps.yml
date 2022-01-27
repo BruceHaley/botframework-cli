@@ -57,6 +57,7 @@ steps:
 
 - script: 'node ./common/scripts/version-and-pack.js --version $(buildVersion)'
   displayName: 'Version and Pack'
+  enabled: false
 
 - task: CopyFiles@2
   displayName: 'Copy packages to: $(Build.ArtifactStagingDirectory)/drop'
@@ -65,6 +66,7 @@ steps:
     Contents: '**/*.tgz'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/drop'
     flattenFolders: true
+  enabled: false
     
 - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
   displayName: 'generate software bill of materials'
@@ -72,12 +74,14 @@ steps:
     BuildDropPath: '$(Build.ArtifactStagingDirectory)/drop'
     PackageName: 'Microsoft Bot Framework CLI'
     PackageVersion: $(buildVersion)
+  enabled: false
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/drop'
     ArtifactName: drop
+  enabled: false
 
 - powershell: 'Get-ChildItem .. -ErrorAction Continue -Recurse -Force | Where {$_.FullName -notlike "*node_modules*"}'
   displayName: 'Dir workspace except node_modules'
