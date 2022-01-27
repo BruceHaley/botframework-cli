@@ -53,6 +53,7 @@ steps:
 
 - script: 'rush test'
   displayName: 'rush test'
+  enabled: false
 
 - script: 'node ./common/scripts/version-and-pack.js --version $(buildVersion)'
   displayName: 'Version and Pack'
