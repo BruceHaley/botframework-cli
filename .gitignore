@@ -90,3 +90,5 @@ model_dte_roberta_for_test_command
 **/**assessment**.html
 **/**assessment**.txt
 
+**/.obj/**/
+packages/luis/test/fixtures/luisgen/obj/Debug/netcoreapp2.1/LUISGenTest.GeneratedMSBuildEditorConfig.editorconfig
